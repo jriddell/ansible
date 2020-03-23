@@ -1,0 +1,12 @@
+---
+- hosts: test
+  remote_user: ubuntu
+  tasks:
+    - name: setup jr user
+      user:
+        name: jr
+        comment: Jonathan Riddell
+        groups: sudo
+        password: "{{ pass }}"
+      remote_user: ubuntu
+      become: yes
