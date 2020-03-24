@@ -1,0 +1,7 @@
+---
+- hosts: test
+  remote_user: ubuntu
+  tasks:
+    - name: run hello
+      command: /usr/bin/hello
+      remote_user: ubuntu

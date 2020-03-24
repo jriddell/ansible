@@ -1,0 +1,42 @@
+---
+- hosts: test
+  remote_user: jr
+  tasks:
+    - name: copy gnupg files
+      become: yes
+      copy:
+        src: /home/jr/.gnupg/
+        dest: /home/jr/.gnupg/
+        group: jr
+    - name: Change file ownership, group and permissions
+      become: yes
+      file:
+        path: /home/jr/.gnupg/random_seed
+        owner: jr
+        group: jr
+        mode: '0600'
+    - name: Change file ownership, group and permissions
+      become: yes
+      file:
+        path: /home/jr/.gnupg/secring.gpg
+        owner: jr
+        group: jr
+        mode: '0600'
+    - name: Change file ownership, group and permissions
+      become: yes
+      file:
+        path: /home/jr/.gnupg/private-keys-v1.d/
+        owner: jr
+        group: jr
+        mode: '0600'
+        recurse: true
+        state: directory
+    - name: Change file ownership, group and permissions
+      become: yes
+      file:
+        path: /home/jr/.gnupg/crls.d
+        owner: jr
+        group: jr
+        mode: '0600'
+        recurse: true
+        state: directory

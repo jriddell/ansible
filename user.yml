@@ -3,10 +3,39 @@
   remote_user: ubuntu
   tasks:
     - name: setup jr user
+      become: yes
       user:
         name: jr
         comment: Jonathan Riddell
         groups: sudo
         password: "{{ pass }}"
         shell: /bin/bash
+    - name: copy ssh files
       become: yes
+      copy:
+        src: /home/jr/.ssh/config
+        dest: /home/jr/.ssh/config
+        mode: '0644'
+    - name: copy ssh files
+      become: yes
+      copy:
+        src: /home/jr/.ssh/authorized_keys
+        dest: /home/jr/.ssh/authorized_keys
+        mode: '0600'
+    - name: copy ssh files
+      become: yes
+      copy:
+        src: /home/jr/.ssh/id_rsa
+        dest: /home/jr/.ssh/id_rsa
+        mode: '0600'
+    - name: copy ssh files
+      become: yes
+      copy:
+        src: /home/jr/.ssh/id_rsa.pub
+        dest: /home/jr/.ssh/id_rsa.pub
+        mode: '0644'
+#    - name: copy gitconfig
+#      become: yes
+#      copy:
+#        src: /home/jr/.gitconfig
+#        dest: /home/jr/.gitconfig
