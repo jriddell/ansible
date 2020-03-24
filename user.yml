@@ -8,5 +8,5 @@
         comment: Jonathan Riddell
         groups: sudo
         password: "{{ pass }}"
-      remote_user: ubuntu
+        shell: /bin/bash
       become: yes
